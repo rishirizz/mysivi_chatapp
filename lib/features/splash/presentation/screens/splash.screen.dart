@@ -42,6 +42,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToHomeScreen() {
-    Navigator.pushNamed(context, RouteConstants.homeScreen);
+    Navigator.pushReplacementNamed(context, RouteConstants.homeScreen);
   }
 }

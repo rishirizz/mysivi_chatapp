@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysivi_chatapp/core/route_constants.dart';
+import 'package:mysivi_chatapp/core/widgets/placeholder.widget.dart';
 
 class OfferScreen extends StatefulWidget {
   const OfferScreen({super.key});
@@ -13,6 +14,6 @@ class OfferScreen extends StatefulWidget {
 class _OfferScreenState extends State<OfferScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return PlaceholderWidget(placeholderText: 'Offers');
   }
 }

@@ -18,7 +18,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+          colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+        ),
         home: const SplashScreen(),
         onGenerateRoute: (RouteSettings settings) {
           WidgetBuilder builder = AppRouter().getPageRoute(settings);

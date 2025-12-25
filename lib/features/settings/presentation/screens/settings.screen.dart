@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysivi_chatapp/core/route_constants.dart';
+import 'package:mysivi_chatapp/core/widgets/placeholder.widget.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -13,6 +14,6 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return PlaceholderWidget(placeholderText: 'Settings');
   }
 }
