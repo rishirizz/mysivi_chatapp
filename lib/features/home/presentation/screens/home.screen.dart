@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundColor: Colors.white,
               items: AppConstants.bottomNavigationBarItemsList,
               currentIndex: state.selectedIndex,
-              selectedItemColor: Colors.blue,
+              selectedItemColor: Color(0xFF1877F2),
               onTap: (int index) {
                 context.read<HomeBloc>().add(
                   IndexChangedEvent(selectedIndex: index),

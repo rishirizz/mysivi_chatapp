@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysivi_chatapp/core/widgets/profile_picture.widget.dart';
 import 'package:mysivi_chatapp/features/users/presentation/bloc/user.bloc.dart';
 import 'package:mysivi_chatapp/features/users/presentation/bloc/user.state.dart';
 
@@ -19,13 +20,15 @@ class UsersScreen extends StatelessWidget {
           key: const PageStorageKey('users_list'),
           padding: const EdgeInsets.all(12),
           itemCount: state.users.length,
-          separatorBuilder: (_, __) => const Divider(height: 1),
+          separatorBuilder: (_, _) => const SizedBox(height: 10),
           itemBuilder: (_, index) {
             final user = state.users[index];
-
             return ListTile(
-              leading: CircleAvatar(child: Text(user.initial)),
-              title: Text(user.name),
+              leading: ProfilePictureWidget(userInitials: user.initial),
+              title: Text(
+                user.name,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
               onTap: () {
                 // Navigator.pushNamed(
                 //   context,

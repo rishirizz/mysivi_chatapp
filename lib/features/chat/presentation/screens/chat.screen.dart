@@ -41,7 +41,7 @@ class _ChatHomeScreenState extends State<ChatScreen>
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.blue,
+                  color: Color(0xFF1877F2),
                 ),
                 child: Center(child: Icon(Icons.add, color: Colors.white)),
               ),
@@ -55,12 +55,9 @@ class _ChatHomeScreenState extends State<ChatScreen>
           const Divider(color: Color.fromARGB(255, 218, 214, 214)),
           const SizedBox(height: 10),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18.0),
-              child: TabBarView(
-                controller: _tabController,
-                children: const [UsersScreen(), Text('Chat history')],
-              ),
+            child: TabBarView(
+              controller: _tabController,
+              children: const [UsersScreen(), Text('Chat history')],
             ),
           ),
         ],
