@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mysivi_chatapp/core/route_constants.dart';
+import 'package:mysivi_chatapp/core/constants/route.constants.dart';
 import 'package:mysivi_chatapp/core/widgets/placeholder.widget.dart';
 
 class SettingsScreen extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysivi_chatapp/core/enums.dart';
-import 'package:mysivi_chatapp/core/route_constants.dart';
+import 'package:mysivi_chatapp/core/constants/route.constants.dart';
 import 'package:mysivi_chatapp/features/splash/presentation/bloc/splash.bloc.dart';
 import 'package:mysivi_chatapp/features/splash/presentation/bloc/splash.event.dart';
 import 'package:mysivi_chatapp/features/splash/presentation/bloc/splash.state.dart';

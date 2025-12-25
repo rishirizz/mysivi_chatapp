@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mysivi_chatapp/core/route_constants.dart';
-import 'package:mysivi_chatapp/features/offers/presentation/screens/offer.screen.dart';
-import 'package:mysivi_chatapp/features/settings/presentation/screens/settings.screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysivi_chatapp/core/constants/app.constants.dart';
+import 'package:mysivi_chatapp/core/constants/route.constants.dart';
+import 'package:mysivi_chatapp/features/home/presentation/bloc/home.bloc.dart';
+import 'package:mysivi_chatapp/features/home/presentation/bloc/home.event.dart';
+import 'package:mysivi_chatapp/features/home/presentation/bloc/home.state.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,40 +16,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('Index 0: Home'),
-    OfferScreen(),
-    SettingsScreen(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(child: _widgetOptions.elementAt(_selectedIndex)),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag),
-            label: 'Offers',
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return Scaffold(
+          body: SafeArea(
+            child: AppConstants.bottomNavigationWidgetList.elementAt(
+              state.selectedIndex,
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.white,
+            items: AppConstants.bottomNavigationBarItemsList,
+            currentIndex: state.selectedIndex,
+            selectedItemColor: Colors.blue,
+            onTap: (int index) {
+              context.read<HomeBloc>().add(
+                IndexChangedEvent(selectedIndex: index),
+              );
+            },
           ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
-        onTap: _onItemTapped,
-      ),
+        );
+      },
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysivi_chatapp/features/home/presentation/bloc/home.bloc.dart';
 import 'package:mysivi_chatapp/features/splash/presentation/bloc/splash.bloc.dart';
 import 'package:mysivi_chatapp/features/splash/presentation/screens/splash.screen.dart';
 import 'package:mysivi_chatapp/utils/app_router.dart';
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => SplashBloc())],
+      providers: [
+        BlocProvider(create: (context) => SplashBloc()),
+        BlocProvider(create: (context) => HomeBloc()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
