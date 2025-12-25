@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysivi_chatapp/core/constants/route.constants.dart';
-import 'package:mysivi_chatapp/core/widgets/top_switcher.widget.dart';
+import 'package:mysivi_chatapp/features/home/presentation/widgets/top_switcher.widget.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -23,21 +23,23 @@ class _ChatHomeScreenState extends State<ChatScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: NestedScrollView(
-        headerSliverBuilder: (_, __) => [
-          SliverAppBar(
-            floating: true,
-            snap: true,
-            centerTitle: true,
-            title: TopSwitcher(tabController: _tabController),
+    return Column(
+      children: [
+        const SizedBox(height: 20),
+        TopSwitcher(tabController: _tabController),
+        const SizedBox(height: 10),
+        const Divider(color: Color.fromARGB(255, 218, 214, 214)),
+        const SizedBox(height: 10),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: TabBarView(
+              controller: _tabController,
+              children: const [Text('Users'), Text('Chat history')],
+            ),
           ),
-        ],
-        body: TabBarView(
-          controller: _tabController,
-          children: const [Text('Users'), Text('Chat history')],
         ),
-      ),
+      ],
     );
   }
 }
