@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mysivi_chatapp/core/constants/route.constants.dart';
-import 'package:mysivi_chatapp/core/widgets/placeholder.widget.dart';
+import 'package:mysivi_chatapp/core/widgets/top_switcher.widget.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -8,12 +8,36 @@ class ChatScreen extends StatefulWidget {
   static String routeName = RouteConstants.chatScreen;
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
+  State<ChatScreen> createState() => _ChatHomeScreenState();
 }
 
-class _ChatScreenState extends State<ChatScreen> {
+class _ChatHomeScreenState extends State<ChatScreen>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return PlaceholderWidget(placeholderText: 'Chats');
+    return Scaffold(
+      body: NestedScrollView(
+        headerSliverBuilder: (_, __) => [
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            centerTitle: true,
+            title: TopSwitcher(tabController: _tabController),
+          ),
+        ],
+        body: TabBarView(
+          controller: _tabController,
+          children: const [Text('Users'), Text('Chat history')],
+        ),
+      ),
+    );
   }
 }

@@ -26,16 +26,26 @@ class _HomeScreenState extends State<HomeScreen> {
               state.selectedIndex,
             ),
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Colors.white,
-            items: AppConstants.bottomNavigationBarItemsList,
-            currentIndex: state.selectedIndex,
-            selectedItemColor: Colors.blue,
-            onTap: (int index) {
-              context.read<HomeBloc>().add(
-                IndexChangedEvent(selectedIndex: index),
-              );
-            },
+          bottomNavigationBar: Container(
+            decoration: const BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: Color(0xFFE0E0E0), 
+                  width: 1,
+                ),
+              ),
+            ),
+            child: BottomNavigationBar(
+              backgroundColor: Colors.white,
+              items: AppConstants.bottomNavigationBarItemsList,
+              currentIndex: state.selectedIndex,
+              selectedItemColor: Colors.blue,
+              onTap: (int index) {
+                context.read<HomeBloc>().add(
+                  IndexChangedEvent(selectedIndex: index),
+                );
+              },
+            ),
           ),
         );
       },
