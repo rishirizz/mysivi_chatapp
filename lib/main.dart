@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysivi_chatapp/features/home/presentation/bloc/home.bloc.dart';
 import 'package:mysivi_chatapp/features/splash/presentation/bloc/splash.bloc.dart';
 import 'package:mysivi_chatapp/features/splash/presentation/screens/splash.screen.dart';
+import 'package:mysivi_chatapp/features/users/presentation/bloc/user.bloc.dart';
 import 'package:mysivi_chatapp/utils/app_router.dart';
 
 void main() {
@@ -18,13 +19,14 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => SplashBloc()),
         BlocProvider(create: (context) => HomeBloc()),
+        BlocProvider(create: (context) => UsersBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: .fromSeed(seedColor: Colors.blue[900]!),
         ),
         home: const SplashScreen(),
         onGenerateRoute: (RouteSettings settings) {

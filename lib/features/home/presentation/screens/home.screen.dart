@@ -29,10 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
           bottomNavigationBar: Container(
             decoration: const BoxDecoration(
               border: Border(
-                top: BorderSide(
-                  color: Color(0xFFE0E0E0), 
-                  width: 1,
-                ),
+                top: BorderSide(color: Color(0xFFE0E0E0), width: 1),
               ),
             ),
             child: BottomNavigationBar(
