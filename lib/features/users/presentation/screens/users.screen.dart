@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysivi_chatapp/core/constants/route.constants.dart';
 import 'package:mysivi_chatapp/core/widgets/profile_picture.widget.dart';
+import 'package:mysivi_chatapp/features/chat/presentation/screens/chat_details.screen.dart';
 import 'package:mysivi_chatapp/features/users/presentation/bloc/user.bloc.dart';
 import 'package:mysivi_chatapp/features/users/presentation/bloc/user.state.dart';
 
@@ -31,10 +32,11 @@ class UsersScreen extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               onTap: () {
-                Navigator.pushNamed(
+                Navigator.push(
                   context,
-                  RouteConstants.chatDetails,
-                  arguments: user,
+                  MaterialPageRoute(
+                    builder: (_) => ChatDetailsScreen(user: user),
+                  ),
                 );
               },
             );
