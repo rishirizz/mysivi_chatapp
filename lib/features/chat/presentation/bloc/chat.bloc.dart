@@ -20,17 +20,13 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     // Add sender message immediately
     final updatedMessages = List<ChatMessage>.from(state.messages)
       ..add(ChatMessage(message: event.message, type: MessageType.sender));
-
     emit(state.copyWith(messages: updatedMessages, status: ChatStatus.loading));
-
     // Fetch receiver message from public API
     try {
       final randomId = Random().nextInt(500) + 1;
-
       final response = await http.get(
         Uri.parse('https://jsonplaceholder.typicode.com/comments/$randomId'),
       );
-
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         add(ReceiveMessageEvent(data['body'] ?? 'No reply'));

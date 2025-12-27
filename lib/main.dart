@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mysivi_chatapp/features/chat_history/presentation/bloc/chat_history.bloc.dart';
 import 'package:mysivi_chatapp/features/home/presentation/bloc/home.bloc.dart';
 import 'package:mysivi_chatapp/features/splash/presentation/bloc/splash.bloc.dart';
 import 'package:mysivi_chatapp/features/splash/presentation/screens/splash.screen.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => SplashBloc()),
         BlocProvider(create: (context) => HomeBloc()),
         BlocProvider(create: (context) => UsersBloc()),
+        BlocProvider(create: (_) => ChatHistoryBloc()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
