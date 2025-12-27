@@ -35,10 +35,8 @@ class MessagesListWidget extends StatelessWidget {
                 state.status == ChatStatus.loading) {
               return const TypingIndicator();
             }
-
             final message = state.messages[index];
             final isSender = message.type == MessageType.sender;
-
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 4),
               child: Row(
@@ -47,7 +45,6 @@ class MessagesListWidget extends StatelessWidget {
                     ? MainAxisAlignment.end
                     : MainAxisAlignment.start,
                 children: [
-                  // 🔹 Receiver avatar
                   if (!isSender)
                     ProfilePictureWidget(
                       userInitials: user.initial,
@@ -56,13 +53,11 @@ class MessagesListWidget extends StatelessWidget {
 
                   const SizedBox(width: 8),
 
-                  // 🔹 Name + message column
                   Column(
                     crossAxisAlignment: isSender
                         ? CrossAxisAlignment.end
                         : CrossAxisAlignment.start,
                     children: [
-                      // 🔹 Receiver name (only once per message)
                       if (!isSender)
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4),
@@ -76,7 +71,6 @@ class MessagesListWidget extends StatelessWidget {
                           ),
                         ),
 
-                      // 🔹 Message bubble
                       Container(
                         padding: const EdgeInsets.all(12),
                         constraints: BoxConstraints(
@@ -95,13 +89,11 @@ class MessagesListWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-
-                  // 🔹 Sender avatar
                   if (isSender) ...[
                     const SizedBox(width: 8),
                     ProfilePictureWidget(
                       userInitials: 'Y',
-                      colors: const [Colors.blue, Colors.purpleAccent],
+                      colors: const [Colors.purple, Colors.purpleAccent],
                     ),
                   ],
                 ],
