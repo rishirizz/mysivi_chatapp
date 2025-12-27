@@ -11,8 +11,11 @@ class AppConstants {
   ];
 
   static const bottomNavigationBarItemsList = <BottomNavigationBarItem>[
-    BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Chat'),
-    BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: 'Offers'),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.chat_bubble_outline),
+      label: 'Chat',
+    ),
+    BottomNavigationBarItem(icon: Icon(Icons.sell), label: 'Offers'),
     BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
   ];
 }
