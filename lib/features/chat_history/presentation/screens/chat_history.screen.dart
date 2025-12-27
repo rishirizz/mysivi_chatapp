@@ -15,15 +15,16 @@ class ChatHistoryScreen extends StatelessWidget {
         if (state.histories.isEmpty) {
           return const Center(child: Text('No chats yet'));
         }
-
-        return ListView.separated(
+        return ListView.builder(
           padding: const EdgeInsets.all(12),
           itemCount: state.histories.length,
-          separatorBuilder: (_, __) => const Divider(),
           itemBuilder: (_, index) {
             final chat = state.histories[index];
             return ListTile(
-              leading: ProfilePictureWidget(userInitials: chat.user.initial),
+              leading: ProfilePictureWidget(
+                userInitials: chat.user.initial,
+                colors: [Colors.green, Colors.green],
+              ),
               title: Text(
                 chat.user.name,
                 style: const TextStyle(fontWeight: FontWeight.bold),

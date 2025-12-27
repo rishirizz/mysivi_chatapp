@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysivi_chatapp/core/constants/route.constants.dart';
+import 'package:mysivi_chatapp/features/chat_history/presentation/screens/chat_history.screen.dart';
 import 'package:mysivi_chatapp/features/home/presentation/widgets/top_switcher.widget.dart';
 import 'package:mysivi_chatapp/features/users/presentation/bloc/user.bloc.dart';
 import 'package:mysivi_chatapp/features/users/presentation/bloc/user.event.dart';
@@ -57,7 +58,7 @@ class _ChatHomeScreenState extends State<ChatScreen>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: const [UsersScreen(), Text('Chat history')],
+              children: const [UsersScreen(), ChatHistoryScreen()],
             ),
           ),
         ],

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ProfilePictureWidget extends StatelessWidget {
-  const ProfilePictureWidget({super.key, required this.userInitials});
+  const ProfilePictureWidget({
+    super.key,
+    required this.userInitials,
+    required this.colors,
+  });
 
   final String userInitials;
+  final List<Color> colors;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,7 @@ class ProfilePictureWidget extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
-          colors: <Color>[Colors.blue, Colors.purpleAccent],
+          colors: colors,
         ),
       ),
       child: Center(

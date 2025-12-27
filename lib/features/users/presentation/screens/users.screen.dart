@@ -25,7 +25,10 @@ class UsersScreen extends StatelessWidget {
           itemBuilder: (_, index) {
             final user = state.users[index];
             return ListTile(
-              leading: ProfilePictureWidget(userInitials: user.initial),
+              leading: ProfilePictureWidget(
+                userInitials: user.initial,
+                colors: [Colors.blue, Colors.purpleAccent],
+              ),
               title: Text(
                 user.name,
                 style: TextStyle(fontWeight: FontWeight.bold),
