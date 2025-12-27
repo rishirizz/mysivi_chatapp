@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysivi_chatapp/core/enums.dart';
 import 'package:mysivi_chatapp/features/chat/data/model/chat_message.model.dart';
@@ -12,19 +13,34 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
     on<ReceiveMessageEvent>(_onReceiveMessage);
   }
 
-  void _onSendMessage(SendMessageEvent event, Emitter<ChatState> emit) async {
+  Future<void> _onSendMessage(
+    SendMessageEvent event,
+    Emitter<ChatState> emit,
+  ) async {
+    // Add sender message immediately
     final updatedMessages = List<ChatMessage>.from(state.messages)
       ..add(ChatMessage(message: event.message, type: MessageType.sender));
 
     emit(state.copyWith(messages: updatedMessages, status: ChatStatus.loading));
 
-    // Fetch receiver message
-    final response = await http.get(
-      Uri.parse('https://api.quotable.io/random'),
-    );
+    // Fetch receiver message from public API
+    try {
+      final randomId = Random().nextInt(500) + 1;
 
-    final data = jsonDecode(response.body);
-    add(ReceiveMessageEvent(data['content']));
+      final response = await http.get(
+        Uri.parse('https://jsonplaceholder.typicode.com/comments/$randomId'),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        add(ReceiveMessageEvent(data['body'] ?? 'No reply'));
+      } else {
+        add(ReceiveMessageEvent('Could not fetch reply'));
+      }
+    } catch (e) {
+      //Fallback for network.
+      add(ReceiveMessageEvent('Receiver message (network unavailable)'));
+    }
   }
 
   void _onReceiveMessage(ReceiveMessageEvent event, Emitter<ChatState> emit) {

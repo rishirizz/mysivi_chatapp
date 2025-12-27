@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mysivi_chatapp/core/enums.dart';
 import 'package:mysivi_chatapp/features/chat/presentation/bloc/chat.bloc.dart';
 import 'package:mysivi_chatapp/features/chat/presentation/bloc/chat.state.dart';
+import 'package:mysivi_chatapp/features/chat/presentation/widgets/typing_indicator.widget.dart';
 
 class MessagesListWidget extends StatelessWidget {
   const MessagesListWidget({super.key});
@@ -11,16 +12,21 @@ class MessagesListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ChatBloc, ChatState>(
       builder: (context, state) {
-        if (state.messages.isEmpty) {
-          return const Center(child: Text('No messages yet'));
-        }
-
         return ListView.builder(
           padding: const EdgeInsets.all(12),
-          itemCount: state.messages.length,
-          itemBuilder: (_, index) {
-            final msg = state.messages[index];
-            final isSender = msg.type == MessageType.sender;
+          itemCount:
+              state.messages.length +
+              (state.status == ChatStatus.loading ? 1 : 0),
+          itemBuilder: (context, index) {
+            // Show typing indicator as last item
+            if (index == state.messages.length &&
+                state.status == ChatStatus.loading) {
+              return const TypingIndicator();
+            }
+
+            final message = state.messages[index];
+            final isSender = message.type == MessageType.sender;
+
             return Align(
               alignment: isSender
                   ? Alignment.centerRight
@@ -33,7 +39,7 @@ class MessagesListWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Text(
-                  msg.message,
+                  message.message,
                   style: TextStyle(
                     color: isSender ? Colors.white : Colors.black,
                   ),
