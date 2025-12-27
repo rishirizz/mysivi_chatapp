@@ -1,16 +1,27 @@
-# mysivi_chatapp
+# MySivi Chat App
 
-A new Flutter project.
+---
 
-## Getting Started
+## 📱 Overview
 
-This project is a starting point for a Flutter application.
+This application demonstrates a simple chat workflow with:
+- Users list
+- Chat screen with sender & receiver messages
+- Chat history showing last message and timestamp
 
-A few resources to get you started if this is your first Flutter project:
+The project follows clean, modular Flutter practices using BLoC for state management.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ✨ Features
+
+### Users
+- Add users dynamically
+- Display user initials with avatar styling
+- Navigate to individual chat screens
+
+### Chat
+- Sender messages added locally
+- Receiver messages fetched from a public open-source API
+- Messenger-style
+
