@@ -41,7 +41,11 @@ class ChatDetailsScreen extends StatelessWidget {
               body: SafeArea(
                 child: Column(
                   children: [
-                    const Expanded(child: MessagesListWidget()),
+                    Expanded(
+                      child: MessagesListWidget(
+                        user: UserModel(name: user.name),
+                      ),
+                    ),
                     const MesssageInputWidget(),
                   ],
                 ),
